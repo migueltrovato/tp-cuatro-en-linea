@@ -127,7 +127,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: devuelve el último casillero VACIO en una columna
+	 * post: devuelve la posición del último casillero VACIO en una columna
 	 * 		de lo contrario devuelve null
 	 */
 	private Integer verificadorCasilleroLibreColumna(int columna){
@@ -135,7 +135,7 @@ public class CuatroEnLinea {
 		boolean hayCasilleroVacio = false;
 		Integer ultimaPosicionVacia = null;
 		
-		for (int i = this.contarFilas()-1; i < this.contarFilas() && !hayCasilleroVacio; i--) {
+		for (int i = this.contarFilas()-1; i >= 0 && !hayCasilleroVacio; i--) {
 			if (this.tablero[i][columna-1] == Casillero.VACIO) {
 				hayCasilleroVacio = true;
 				ultimaPosicionVacia = i+1;
