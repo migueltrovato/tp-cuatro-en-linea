@@ -4,7 +4,7 @@ package juego;
  * 
  * Reglas:
  * 
- * 		...
+ * 		...asd
  *
  */
 public class CuatroEnLinea {
