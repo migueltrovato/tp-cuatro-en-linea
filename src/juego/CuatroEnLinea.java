@@ -27,23 +27,33 @@ public class CuatroEnLinea {
 	private String jugadorRojo;
 	private String jugadorAmarillo;
 	
-	private Casillero tablero [][];
+	private Casillero tablero[][];
 	
 	
 	
 	public CuatroEnLinea(int filas, int columnas, String jugadorRojo, String jugadorAmarillo) {
 		
-		if(filas<=1 || columnas<=1){
-			Error error = new Error ("La cantidad de filas y columnas deben ser mayores a 1.");
+		if(filas < 4 || columnas < 4){
+			Error error = new Error ("La cantidad de filas y de columnas deben ser al menos 4.");
 			throw error;
 		}
+		
 		this.filas = filas;
 		this.columnas = columnas;
 		this.jugadorAmarillo = jugadorAmarillo;
 		this.jugadorRojo = jugadorRojo;
 		this.tablero = new Casillero[this.contarFilas()][this.contarColumnas()];
+		this.inicializarTableroVacio();
 	}
-
+	
+	private void inicializarTableroVacio() {
+		for (int i = 0; i < this.contarFilas(); i++) {
+			for (int j = 0; j < this.contarColumnas(); j++) {
+				this.tablero[i][j] = Casillero.VACIO;
+			}
+		}
+	}
+	
 	/**
 	 * post: devuelve la cantidad máxima de fichas que se pueden apilar en el tablero.
 	 */
@@ -69,13 +79,14 @@ public class CuatroEnLinea {
 	 * @param columna
 	 */
 	public Casillero obtenerCasillero(int fila, int columna) {
-		if( !(fila>0 && fila<this.contarFilas()) || !(columna>0 && columna<this.contarColumnas())){
+		if( !(fila >= 1 && fila <= this.contarFilas()) 
+				|| !(columna >= 1 && columna <= this.contarColumnas())){
 		
 			Error error = new Error ("La cantidad de filas y columnas debe estar entre las elegidas para jugar.");
 			throw error;
 		}
 		
-		return this.tablero[fila][columna];
+		return this.tablero[fila-1][columna-1];
 	}
 	
 	/**
@@ -87,7 +98,9 @@ public class CuatroEnLinea {
 	 */
 	public void soltarFicha(int columna) {
 		
-		if(this.termino()  || !this.verificadorEspacioLibreColumna(columna) || !(columna >=1 && columna <=this.contarColumnas())  ){
+		if(this.termino()  
+				|| !this.verificadorEspacioLibreColumna(columna) 
+				|| !(columna >=1 && columna <=this.contarColumnas())  ){
 			Error error = new Error("Eljuego no debe haber terminado y se debe dar un valor valido");
 			throw error;
 		}
