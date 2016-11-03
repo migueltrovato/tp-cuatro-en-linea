@@ -26,6 +26,7 @@ public class CuatroEnLinea {
 	private int columnas;
 	private String jugadorRojo;
 	private String jugadorAmarillo;
+	private String esTurnoDelJugador;
 	
 	private Casillero tablero[][];
 	
@@ -44,9 +45,15 @@ public class CuatroEnLinea {
 		this.jugadorRojo = jugadorRojo;
 		this.tablero = new Casillero[this.contarFilas()][this.contarColumnas()];
 		this.inicializarTableroVacio();
+		/*
+		 *  TODO: Consultar como manejar quien empieza primero
+		 *  	  por ahora dejamos que el rojo comienze primero
+		 */
+		this.esTurnoDelJugador = jugadorRojo;
 	}
 	
 	private void inicializarTableroVacio() {
+		
 		for (int i = 0; i < this.contarFilas(); i++) {
 			for (int j = 0; j < this.contarColumnas(); j++) {
 				this.tablero[i][j] = Casillero.VACIO;
@@ -79,6 +86,7 @@ public class CuatroEnLinea {
 	 * @param columna
 	 */
 	public Casillero obtenerCasillero(int fila, int columna) {
+		
 		if( !(fila >= 1 && fila <= this.contarFilas()) 
 				|| !(columna >= 1 && columna <= this.contarColumnas())){
 		
@@ -98,28 +106,43 @@ public class CuatroEnLinea {
 	 */
 	public void soltarFicha(int columna) {
 		
-		if(this.termino()  
-				|| !this.verificadorEspacioLibreColumna(columna) 
-				|| !(columna >=1 && columna <=this.contarColumnas())  ){
+		if(this.termino()
+				|| !(columna >=1 && columna <= this.contarColumnas())  ){
 			Error error = new Error("Eljuego no debe haber terminado y se debe dar un valor valido");
 			throw error;
 		}
-		for (int i = 1; i < tablero.length && tablero[i][columna] !=Casillero.VACIO; i++){
-			//Hay que hacer que caiga laficha del jugador en el ulltimo casillero vacio que encuentre
+		
+		Integer casilleroLibre = verificadorCasilleroLibreColumna(columna);
+		
+		if (casilleroLibre != null) {
+			if (esTurnoDelJugador == this.jugadorRojo) {
+				this.tablero[casilleroLibre-1][columna-1] = Casillero.ROJO;
+				this.esTurnoDelJugador = this.jugadorAmarillo;
+			} else {
+				this.tablero[casilleroLibre-1][columna-1] = Casillero.AMARILLO;
+				this.esTurnoDelJugador = this.jugadorRojo;
+			}
 		}
 		
 	}
-	
-	
-	
-	private boolean verificadorEspacioLibreColumna(int columna){
-		for (int i = 1; i < tablero.length && tablero[i][columna] !=Casillero.VACIO; i++){
-			
-					
-					
-			
+
+	/**
+	 * post: devuelve el último casillero VACIO en una columna
+	 * 		de lo contrario devuelve null
+	 */
+	private Integer verificadorCasilleroLibreColumna(int columna){
+		
+		boolean hayCasilleroVacio = false;
+		Integer ultimaPosicionVacia = null;
+		
+		for (int i = this.contarFilas()-1; i < this.contarFilas() && !hayCasilleroVacio; i--) {
+			if (this.tablero[i][columna-1] == Casillero.VACIO) {
+				hayCasilleroVacio = true;
+				ultimaPosicionVacia = i+1;
+			}
 		}
-		return false;
+		
+		return ultimaPosicionVacia;
 	}
 	
 	/**
