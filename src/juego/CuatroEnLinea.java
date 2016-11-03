@@ -1,5 +1,4 @@
 package juego;
-
 /**
  * Juego Cuatro en Lí­nea
  * 
@@ -22,8 +21,27 @@ public class CuatroEnLinea {
 	 * @param jugadorRojo : nombre del jugador con fichas rojas.
 	 * @param jugadorAmarillo : nombre del jugador con fichas amarillas.
 	 */
+	
+	private int filas;
+	private int columnas;
+	private String jugadorRojo;
+	private String jugadorAmarillo;
+	
+	private Casillero tablero [][];
+	
+	
+	
 	public CuatroEnLinea(int filas, int columnas, String jugadorRojo, String jugadorAmarillo) {
-
+		
+		if(filas<=1 || columnas<=1){
+			Error error = new Error ("La cantidad de filas y columnas deben ser mayores a 1.");
+			throw error;
+		}
+		this.filas = filas;
+		this.columnas = columnas;
+		this.jugadorAmarillo = jugadorAmarillo;
+		this.jugadorRojo = jugadorRojo;
+		this.tablero = new Casillero[this.contarFilas()][this.contarColumnas()];
 	}
 
 	/**
@@ -31,7 +49,7 @@ public class CuatroEnLinea {
 	 */
 	public int contarFilas() {
 		
-		return 4;
+		return this.filas;
 	}
 
 	/**
@@ -39,7 +57,7 @@ public class CuatroEnLinea {
 	 */
 	public int contarColumnas() {
 		
-		return 4;
+		return this.columnas;
 	}
 
 	/**
@@ -51,8 +69,13 @@ public class CuatroEnLinea {
 	 * @param columna
 	 */
 	public Casillero obtenerCasillero(int fila, int columna) {
+		if( !(fila>0 && fila<this.contarFilas()) || !(columna>0 && columna<this.contarColumnas())){
 		
-		return Casillero.VACIO;
+			Error error = new Error ("La cantidad de filas y columnas debe estar entre las elegidas para jugar.");
+			throw error;
+		}
+		
+		return this.tablero[fila][columna];
 	}
 	
 	/**
@@ -64,6 +87,26 @@ public class CuatroEnLinea {
 	 */
 	public void soltarFicha(int columna) {
 		
+		if(this.termino()  || !this.verificadorEspacioLibreColumna(columna) || !(columna >=1 && columna <=this.contarColumnas())  ){
+			Error error = new Error("Eljuego no debe haber terminado y se debe dar un valor valido");
+			throw error;
+		}
+		for (int i = 1; i < tablero.length && tablero[i][columna] !=Casillero.VACIO; i++){
+			//Hay que hacer que caiga laficha del jugador en el ulltimo casillero vacio que encuentre
+		}
+		
+	}
+	
+	
+	
+	private boolean verificadorEspacioLibreColumna(int columna){
+		for (int i = 1; i < tablero.length && tablero[i][columna] !=Casillero.VACIO; i++){
+			
+					
+					
+			
+		}
+		return false;
 	}
 	
 	/**
@@ -71,6 +114,7 @@ public class CuatroEnLinea {
 	 * 		 ganó o no existen casilleros vacíos.
 	 */
 	public boolean termino() {
+		
 		
 		return false;
 	}
