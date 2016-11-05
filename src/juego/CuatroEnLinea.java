@@ -199,15 +199,16 @@ public class CuatroEnLinea {
 		for (int i = 0; i < this.contarColumnas() && !hayGanadorVertical; i++) {
 			
 			cantidadDeFichasContiguas = 1;
-			for (int j = 0; j < this.contarFilas()-1; j++) {
-				if(this.tablero[j][i] == Casillero.VACIO) {
-					cantidadDeFichasContiguas = 0;
-				}
-				if (this.tablero[j][i] == this.tablero[j+1][i]) {
+			for (int j = 0; j < this.contarFilas()-1 && !hayGanadorVertical; j++) {
+				if (this.tablero[j][i] == this.tablero[j+1][i] 
+						&& this.tablero[j][i] != Casillero.VACIO) {
 					cantidadDeFichasContiguas++;
+				} else {
+					cantidadDeFichasContiguas = 1;
 				}
+				hayGanadorVertical = cantidadDeFichasContiguas == 4;
 			}
-			hayGanadorVertical = cantidadDeFichasContiguas == 4;
+			
 		}	
 		return hayGanadorVertical;
 	}
