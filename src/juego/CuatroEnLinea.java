@@ -178,6 +178,8 @@ public class CuatroEnLinea {
 		int cantidadDeFichasContiguas = 1;
 		
 		for (int i = 0; i < this.contarFilas(); i++) {
+			
+			cantidadDeFichasContiguas = 1;
 			for (int j = 1; j < this.contarColumnas(); j++) {
 				if (this.tablero[i][j-1] != Casillero.VACIO 
 						&& this.tablero[i][j-1] == this.tablero[i][j]) {
@@ -195,6 +197,8 @@ public class CuatroEnLinea {
 		int cantidadDeFichasContiguas = 1;
 				
 		for (int i = 0; i < this.contarColumnas(); i++) {
+			
+			cantidadDeFichasContiguas = 1;
 			for (int j = 1; j < this.contarFilas(); j++) {
 				if (this.tablero[j-1][i] != Casillero.VACIO
 						&& this.tablero[j-1][i] == this.tablero[j][i]) {
