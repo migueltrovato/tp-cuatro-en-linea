@@ -27,6 +27,7 @@ public class CuatroEnLinea {
 	private String jugadorRojo;
 	private String jugadorAmarillo;
 	private String esTurnoDelJugador;
+	private String ultimoEnSoltarFicha;
 	
 	private Casillero tablero[][];
 	private int fichasTotalesUsadas;
@@ -46,10 +47,8 @@ public class CuatroEnLinea {
 		this.jugadorRojo = jugadorRojo;
 		this.tablero = new Casillero[this.contarFilas()][this.contarColumnas()];
 		this.inicializarTableroVacio();
-		/*
-		 *  TODO: Consultar como manejar quien empieza primero
-		 *  	  por ahora dejamos que el rojo comienze primero
-		 */
+		
+		// El rojo siempre comienza primero
 		this.esTurnoDelJugador = jugadorRojo;
 	}
 	
@@ -119,9 +118,11 @@ public class CuatroEnLinea {
 			if (esTurnoDelJugador == this.jugadorRojo) {
 				this.tablero[casilleroLibre-1][columna-1] = Casillero.ROJO;
 				this.esTurnoDelJugador = this.jugadorAmarillo;
+				this.ultimoEnSoltarFicha = this.jugadorRojo;
 			} else {
 				this.tablero[casilleroLibre-1][columna-1] = Casillero.AMARILLO;
 				this.esTurnoDelJugador = this.jugadorRojo;
+				this.ultimoEnSoltarFicha = this.jugadorAmarillo;
 			}
 			fichasTotalesUsadas++;
 		}
@@ -165,11 +166,44 @@ public class CuatroEnLinea {
 	public boolean hayGanador() {
 		
 		/*
-		 * TODO: hacer que se fije si hay cuatro en linea horizontal
-		 * 		luego diagonal, luego vertical
+		 * TODO: hacer que se fije si hay cuatro en linea vertical
 		 */
 		
-		return false;
+		return hayGanadorHorizontal() || hayGanadorVertical();
+	}
+
+	private boolean hayGanadorHorizontal() {
+
+		boolean hayGanadorHorizontal = false;
+		int cantidadDeFichasContiguas = 1;
+		
+		for (int i = 0; i < this.contarFilas(); i++) {
+			for (int j = 1; j < this.contarColumnas(); j++) {
+				if (this.tablero[i][j-1] != Casillero.VACIO 
+						&& this.tablero[i][j-1] == this.tablero[i][j]) {
+					cantidadDeFichasContiguas++;
+				}
+			}
+			hayGanadorHorizontal = cantidadDeFichasContiguas == 4;
+		}
+		return hayGanadorHorizontal;
+	}
+	
+	private boolean hayGanadorVertical() {
+
+		boolean hayGanadorVertical = false;
+		int cantidadDeFichasContiguas = 1;
+				
+		for (int i = 0; i < this.contarColumnas(); i++) {
+			for (int j = 1; j < this.contarFilas(); j++) {
+				if (this.tablero[j-1][i] != Casillero.VACIO
+						&& this.tablero[j-1][i] == this.tablero[j][i]) {
+					cantidadDeFichasContiguas++;
+				}
+			}
+			hayGanadorVertical = cantidadDeFichasContiguas == 4;
+		}	
+		return hayGanadorVertical;
 	}
 
 	/**
@@ -178,6 +212,12 @@ public class CuatroEnLinea {
 	 */
 	public String obtenerGanador() {
 		
-		return null;
+		String ganador = null;
+		
+		if (this.termino()) {
+			ganador = this.ultimoEnSoltarFicha;
+		}
+		
+		return ganador;
 	}
 }

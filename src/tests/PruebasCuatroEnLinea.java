@@ -39,6 +39,14 @@ public class PruebasCuatroEnLinea {
 	}
 	
 	@Test
+	public void alComenzarElJuegoNoHayGanadorYGanadorEsNull() {
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+		
+		Assert.assertFalse(juego.hayGanador());
+		Assert.assertNull(juego.obtenerGanador());
+	}
+	
+	@Test
 	public void siSeCreaUnJuegoConCuatroFilasYCuatroColumnasSeCreaTableroDeCuatroPorCuatro() {
 		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
@@ -192,6 +200,117 @@ public class PruebasCuatroEnLinea {
 		}
 		
 		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoHaceCuatroEnLineaHorizontalEnLaUltimaFilaHayGanadorYGanaElRojo() {
+		
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		juego.soltarFicha(4);
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Carlitox", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoHaceCuatroEnLineaHorizontalEnLaUltimaFilaDeUnTableroDeSietePorSieteHayGanadorYGanaElRojo() {
+		
+		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		juego.soltarFicha(4);
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Carlitox", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoNoHaceCuatroEnLineaHorizontalEnLaUltimaFilaNoHayGanadorYGanadorEsNull() {
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		
+		Assert.assertFalse(juego.hayGanador());
+		Assert.assertNull(juego.obtenerGanador());
+		Assert.assertFalse(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoNoHaceCuatroEnLineaHorizontalEnLaUltimaFilaDeUnTableroDeSietePorSieteNoHayGanadorYGanadorEsNull() {
+		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		
+		Assert.assertFalse(juego.hayGanador());
+		Assert.assertNull(juego.obtenerGanador());
+		Assert.assertFalse(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoHaceCuatroEnLineaVerticalEnLaPrimeraColumnaHayGanadorYGanaElRojo() {
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		juego.soltarFicha(4);
+		juego.soltarFicha(1);
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Carlitox", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoHaceCuatroEnLineaVerticalEnLaPrimeraColumnaDeUnTableroDeSietePorSieteHayGanadorYGanaElRojo() {
+		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		juego.soltarFicha(4);
+		juego.soltarFicha(1);
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Carlitox", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siElJugadorRojoNoHaceCuatroEnLineaVerticalEnLaPrimeraFilaNoHayGanador() {
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(2);
+		juego.soltarFicha(1);
+		juego.soltarFicha(3);
+		juego.soltarFicha(1);
+		juego.soltarFicha(1);
+		
+		Assert.assertFalse(juego.hayGanador());
+		Assert.assertNull(juego.obtenerGanador());
+		Assert.assertFalse(juego.termino());
 	}
 	
 }
