@@ -153,7 +153,8 @@ public class CuatroEnLinea {
 	 */
 	public boolean termino() {
 		
-	    	boolean juegoTerminado = (this.fichasTotalesUsadas==(this.contarFilas()*this.contarColumnas()) || this.hayGanador());
+	    	boolean juegoTerminado = (this.fichasTotalesUsadas == (this.contarFilas() * this.contarColumnas()) 
+	    								|| this.hayGanador());
 	    		
 	    	return juegoTerminado;
 	}
