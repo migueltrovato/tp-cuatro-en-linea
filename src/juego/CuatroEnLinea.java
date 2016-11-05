@@ -177,7 +177,7 @@ public class CuatroEnLinea {
 		boolean hayGanadorHorizontal = false;
 		int cantidadDeFichasContiguas = 1;
 		
-		for (int i = 0; i < this.contarFilas(); i++) {
+		for (int i = 0; i < this.contarFilas() && !hayGanadorHorizontal; i++) {
 			
 			cantidadDeFichasContiguas = 1;
 			for (int j = 1; j < this.contarColumnas(); j++) {
@@ -194,14 +194,16 @@ public class CuatroEnLinea {
 	private boolean hayGanadorVertical() {
 
 		boolean hayGanadorVertical = false;
-		int cantidadDeFichasContiguas = 1;
+		int cantidadDeFichasContiguas = 0;
 				
-		for (int i = 0; i < this.contarColumnas(); i++) {
+		for (int i = 0; i < this.contarColumnas() && !hayGanadorVertical; i++) {
 			
 			cantidadDeFichasContiguas = 1;
-			for (int j = 1; j < this.contarFilas(); j++) {
-				if (this.tablero[j-1][i] != Casillero.VACIO
-						&& this.tablero[j-1][i] == this.tablero[j][i]) {
+			for (int j = 0; j < this.contarFilas()-1; j++) {
+				if(this.tablero[j][i] == Casillero.VACIO) {
+					cantidadDeFichasContiguas = 0;
+				}
+				if (this.tablero[j][i] == this.tablero[j+1][i]) {
 					cantidadDeFichasContiguas++;
 				}
 			}
