@@ -338,13 +338,13 @@ public class PruebasCuatroEnLinea {
 			
 		
 		/*
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, A, V, V, V, V ]]
-		 * [[ R, R, R, V, R, V, V ]]
-		 * [[ A, A, A, R, A, A, V ]]
-		 * [[ R, A, R, A, R, A, R ]]
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, A, V, V, V, V ],
+		 *  [ R, R, R, V, R, V, V ],
+		 *  [ A, A, A, R, A, A, V ],
+		 *  [ R, A, R, A, R, A, R ]]
 		 */
 		
 		
@@ -377,13 +377,13 @@ public class PruebasCuatroEnLinea {
 				
 		
 		/*
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, V, V, V, V, V ]]
-		 * [[ V, V, A, V, V, V, V ]]
-		 * [[ R, R, R, V, R, V, V ]]
-		 * [[ A, A, A, R, A, A, V ]]
-		 * [[ R, A, R, A, R, A, R ]]
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, A, V, V, V, V ],
+		 *  [ R, R, R, V, R, V, V ],
+		 *  [ A, A, A, R, A, A, V ],
+		 *  [ R, A, R, A, R, A, R ]]
 		 */
 		
 		
