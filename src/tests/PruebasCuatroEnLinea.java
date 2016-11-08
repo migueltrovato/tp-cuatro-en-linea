@@ -313,4 +313,83 @@ public class PruebasCuatroEnLinea {
 		Assert.assertFalse(juego.termino());
 	}
 	
+	@Test
+	public void siELJugadorAmarilloNoHaceCuatroEnLineaHorizontalPorDosPartesNoHayGanador() {
+		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
+		
+		juego.soltarFicha(1);		
+		juego.soltarFicha(2);
+		juego.soltarFicha(3);
+		juego.soltarFicha(4);
+		juego.soltarFicha(5);
+		juego.soltarFicha(6);
+		juego.soltarFicha(7);		
+		juego.soltarFicha(1);
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(2);
+		juego.soltarFicha(3);
+		juego.soltarFicha(3);
+		juego.soltarFicha(3);		
+		juego.soltarFicha(4);	
+		juego.soltarFicha(5);
+		juego.soltarFicha(5);		
+		juego.soltarFicha(6);
+			
+		
+		/*
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, A, V, V, V, V ]]
+		 * [[ R, R, R, V, R, V, V ]]
+		 * [[ A, A, A, R, A, A, V ]]
+		 * [[ R, A, R, A, R, A, R ]]
+		 */
+		
+		
+		Assert.assertFalse(juego.hayGanador());
+		Assert.assertNull(juego.obtenerGanador());
+		Assert.assertFalse(juego.termino());
+	}
+	
+	@Test
+	public void siELJugadorAmarilloHaceCuatroEnLineaHorizontalPorDosPartesHayGanadorYEsElAmarillo() {
+		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
+		juego.soltarFicha(1);		
+		juego.soltarFicha(2);
+		juego.soltarFicha(3);
+		juego.soltarFicha(4);
+		juego.soltarFicha(5);
+		juego.soltarFicha(6);
+		juego.soltarFicha(7);	
+		juego.soltarFicha(1);
+		juego.soltarFicha(1);
+		juego.soltarFicha(2);
+		juego.soltarFicha(2);
+		juego.soltarFicha(3);
+		juego.soltarFicha(3);
+		juego.soltarFicha(3);	
+		juego.soltarFicha(5);
+		juego.soltarFicha(5);	
+		juego.soltarFicha(6);
+		juego.soltarFicha(4);
+				
+		
+		/*
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, V, V, V, V, V ]]
+		 * [[ V, V, A, V, V, V, V ]]
+		 * [[ R, R, R, V, R, V, V ]]
+		 * [[ A, A, A, R, A, A, V ]]
+		 * [[ R, A, R, A, R, A, R ]]
+		 */
+		
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Alejo", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
 }
