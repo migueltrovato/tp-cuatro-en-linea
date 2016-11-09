@@ -86,6 +86,13 @@ public class PruebasCuatroEnLinea {
 		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
 		
+		/*
+		 * [[ V, V, V, V],
+		 *  [ V, V, V, V],
+		 *  [ V, V, V, V],
+		 *  [ V, V, V, V]]
+		 */
+		
 		for (int i = 1; i <= juego.contarFilas(); i++) {
 			for (int j = 1; j <= juego.contarColumnas(); j++) {
 				Assert.assertEquals(Casillero.VACIO, juego.obtenerCasillero(i, j));
@@ -98,6 +105,13 @@ public class PruebasCuatroEnLinea {
 		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(2);
+		
+		/*
+		 * [[ V, V, V, V],
+		 *  [ V, V, V, V],
+		 *  [ V, V, V, V],
+		 *  [ V, R, V, V]]
+		 */
 		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.VACIO, juego.obtenerCasillero(3, 2));
@@ -112,6 +126,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(2);		
 		juego.soltarFicha(2);
 		
+		/*
+		 * [[ V, V, V, V],
+		 *  [ V, V, V, V],
+		 *  [ V, A, V, V],
+		 *  [ V, R, V, V]]
+		 */
+		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.AMARILLO, juego.obtenerCasillero(3, 2));
 		Assert.assertEquals(Casillero.VACIO, juego.obtenerCasillero(2, 2));
@@ -125,6 +146,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(2);		
 		juego.soltarFicha(2);
 		juego.soltarFicha(2);
+		
+		/*
+		 * [[ V, V, V, V],
+		 *  [ V, R, V, V],
+		 *  [ V, A, V, V],
+		 *  [ V, R, V, V]]
+		 */
 		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.AMARILLO, juego.obtenerCasillero(3, 2));
@@ -141,6 +169,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(2);
 		juego.soltarFicha(2);
 		
+		/*
+		 * [[ V, A, V, V],
+		 *  [ V, R, V, V],
+		 *  [ V, A, V, V],
+		 *  [ V, R, V, V]]
+		 */
+		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.AMARILLO, juego.obtenerCasillero(3, 2));
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(2, 2));
@@ -156,6 +191,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(2);
 		juego.soltarFicha(2);
 		juego.soltarFicha(4);
+		
+		/*
+		 * [[ V, A, V, V],
+		 *  [ V, R, V, V],
+		 *  [ V, A, V, V],
+		 *  [ V, R, V, R]]
+		 */
 		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.AMARILLO, juego.obtenerCasillero(3, 2));
@@ -175,6 +217,14 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(2);
 		juego.soltarFicha(4);
 		
+		/*
+		 * [[ V, R, V, V],
+		 * 	[ V, A, V, V],
+		 *  [ V, R, V, V],
+		 *  [ V, A, V, V],
+		 *  [ V, R, V, R]]
+		 */
+		
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(5, 2));
 		Assert.assertEquals(Casillero.AMARILLO, juego.obtenerCasillero(4, 2));
 		Assert.assertEquals(Casillero.ROJO, juego.obtenerCasillero(3, 2));
@@ -184,22 +234,35 @@ public class PruebasCuatroEnLinea {
 	}
 	
 	@Test
-	public void siSeLlenaElTableroSinHacerCuatroEnLineaElJuegoTermino() {
+	public void siSeLlenaElTableroSinHacerCuatroEnLineaElJuegoTerminoYNoHayGanador() {
 		
-		// La cantidad de columnas debe ser impar para no hacer cuatro en linea
-		CuatroEnLinea juego = new CuatroEnLinea(4, 5, "Carlitox", "Alejo");
-		
+		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
+				
 		Assert.assertFalse(juego.termino());
 		
-		for (int i = 1; i < 5; i++) {
+		for (int i = 1; i < 3; i++) {
 			juego.soltarFicha(1);		
 			juego.soltarFicha(2);		
 			juego.soltarFicha(3);		
 			juego.soltarFicha(4);
-			juego.soltarFicha(5);
 		}
 		
+		for (int i = 1; i < 3; i++) {
+			juego.soltarFicha(4);
+			juego.soltarFicha(3);
+			juego.soltarFicha(2);
+			juego.soltarFicha(1);
+		}
+			
+		/*
+		 * [[ A, R, A, R],
+		 * 	[ A, R, A, R],
+		 *  [ R, A, R, A],
+		 *  [ R, A, R, A]]
+		 */
+		
 		Assert.assertTrue(juego.termino());
+		Assert.assertNull(juego.obtenerGanador());
 	}
 	
 	@Test
@@ -213,6 +276,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(3);
 		juego.soltarFicha(1);
 		juego.soltarFicha(4);
+		
+		/*
+		 * [[ A, V, V, V],
+		 *  [ A, V, V, V],
+		 *  [ A, V, V, V],
+		 *  [ R, R, R, R]]
+		 */
 		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Carlitox", juego.obtenerGanador());

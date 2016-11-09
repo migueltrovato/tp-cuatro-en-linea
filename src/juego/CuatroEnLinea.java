@@ -154,8 +154,7 @@ public class CuatroEnLinea {
 	 */
 	public boolean termino() {
 		
-	    	boolean juegoTerminado = (this.fichasTotalesUsadas == (this.contarFilas() * this.contarColumnas()) 
-	    								|| this.hayGanador());
+	    	boolean juegoTerminado = (!elTableroTieneCasillerosVacios() || this.hayGanador());
 	    		
 	    	return juegoTerminado;
 	}
@@ -224,10 +223,15 @@ public class CuatroEnLinea {
 		
 		String ganador = null;
 		
-		if (this.termino()) {
+		if (this.termino() 
+				&& elTableroTieneCasillerosVacios()) {
 			ganador = this.ultimoEnSoltarFicha;
 		}
 		
 		return ganador;
+	}
+
+	private boolean elTableroTieneCasillerosVacios() {
+		return this.fichasTotalesUsadas < (this.contarFilas() * this.contarColumnas());
 	}
 }
