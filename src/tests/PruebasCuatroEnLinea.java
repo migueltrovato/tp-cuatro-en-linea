@@ -318,6 +318,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siElJugadorRojoNoHaceCuatroEnLineaHorizontalEnLaUltimaFilaNoHayGanadorYGanadorEsNull() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(1);
@@ -340,6 +341,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siElJugadorRojoNoHaceCuatroEnLineaHorizontalEnLaUltimaFilaDeUnTableroDeSietePorSieteNoHayGanadorYGanadorEsNull() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(1);
@@ -365,6 +367,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siElJugadorRojoHaceCuatroEnLineaVerticalEnLaPrimeraColumnaHayGanadorYGanaElRojo() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(2);
@@ -388,6 +391,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siElJugadorRojoHaceCuatroEnLineaVerticalEnLaPrimeraColumnaDeUnTableroDeSietePorSieteHayGanadorYGanaElRojo() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(2);
@@ -414,6 +418,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siElJugadorRojoNoHaceCuatroEnLineaVerticalEnLaPrimeraFilaNoHayGanador() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(2);
@@ -436,6 +441,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siELJugadorAmarilloNoHaceCuatroEnLineaHorizontalPorDosPartesNoHayGanador() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
 		
 		juego.soltarFicha(1);		
@@ -476,6 +482,7 @@ public class PruebasCuatroEnLinea {
 	
 	@Test
 	public void siELJugadorAmarilloHaceCuatroEnLineaHorizontalPorDosPartesHayGanadorYEsElAmarillo() {
+		
 		CuatroEnLinea juego = new CuatroEnLinea(7, 7, "Carlitox", "Alejo");
 		juego.soltarFicha(1);		
 		juego.soltarFicha(2);
