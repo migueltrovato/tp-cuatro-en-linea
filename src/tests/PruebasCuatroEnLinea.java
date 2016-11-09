@@ -301,6 +301,16 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(1);
 		juego.soltarFicha(4);
 		
+		/*
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ R, R, R, R, V, V, V ]]
+		 */
+		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Carlitox", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
@@ -316,6 +326,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(3);
 		juego.soltarFicha(1);
 		
+		/*
+		 * [[ A, V, V, V],
+		 *  [ A, V, V, V],
+		 *  [ A, V, V, V],
+		 *  [ R, R, R, V]]
+		 */
+		
 		Assert.assertFalse(juego.hayGanador());
 		Assert.assertNull(juego.obtenerGanador());
 		Assert.assertFalse(juego.termino());
@@ -330,6 +347,16 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(1);
 		juego.soltarFicha(3);
 		juego.soltarFicha(1);
+		
+		/*
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ R, R, R, V, V, V, V ]]
+		 */
 		
 		Assert.assertFalse(juego.hayGanador());
 		Assert.assertNull(juego.obtenerGanador());
@@ -347,6 +374,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(4);
 		juego.soltarFicha(1);
 		
+		/*
+		 * [[ R, V, V, V],
+		 *  [ R, V, V, V],
+		 *  [ R, V, V, V],
+		 *  [ R, A, A, A]]
+		 */
+		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Carlitox", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
@@ -363,6 +397,16 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(4);
 		juego.soltarFicha(1);
 		
+		/*
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ R, V, V, V, V, V, V ],
+		 *  [ R, V, V, V, V, V, V ],
+		 *  [ R, V, V, V, V, V, V ],
+		 *  [ R, A, A, A, V, V, V ]]
+		 */
+		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Carlitox", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
@@ -377,6 +421,13 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(3);
 		juego.soltarFicha(1);
 		juego.soltarFicha(1);
+		
+		/*
+		 * [[ A, V, V, V],
+		 *  [ R, V, V, V],
+		 *  [ R, V, V, V],
+		 *  [ R, A, A, V]]
+		 */
 		
 		Assert.assertFalse(juego.hayGanador());
 		Assert.assertNull(juego.obtenerGanador());
