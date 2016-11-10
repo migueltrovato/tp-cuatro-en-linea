@@ -473,8 +473,7 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(4);	
 		juego.soltarFicha(5);
 		juego.soltarFicha(5);		
-		juego.soltarFicha(6);
-			
+		juego.soltarFicha(6);			
 		
 		/*
 		 * [[ V, V, V, V, V, V, V ],
@@ -484,8 +483,7 @@ public class PruebasCuatroEnLinea {
 		 *  [ R, R, R, V, R, V, V ],
 		 *  [ A, A, A, R, A, A, V ],
 		 *  [ R, A, R, A, R, A, R ]]
-		 */
-		
+		 */		
 		
 		Assert.assertFalse(juego.hayGanador());
 		Assert.assertNull(juego.obtenerGanador());
@@ -514,26 +512,24 @@ public class PruebasCuatroEnLinea {
 		juego.soltarFicha(5);	
 		juego.soltarFicha(6);
 		juego.soltarFicha(4);
-				
-		
+					
 		/*
 		 * [[ V, V, V, V, V, V, V ],
 		 *  [ V, V, V, V, V, V, V ],
 		 *  [ V, V, V, V, V, V, V ],
 		 *  [ V, V, A, V, V, V, V ],
-		 *  [ R, R, R, V, R, V, V ],
-		 *  [ A, A, A, R, A, A, V ],
+		 *  [ R, R, R, V, A, V, V ],
+		 *  [ A, A, A, A, R, R, V ],
 		 *  [ R, A, R, A, R, A, R ]]
 		 */
-		
-		
+	
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Alejo", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
 	}
 	
 	@Test
-	public void SiElJugadorRojoHaceCuatroEnLineaDiagonalEmpezandoElPrimeroPorAbajoGanaElRojo(){
+	public void siElJugadorRojoHaceCuatroEnLineaDiagonalEmpezandoElPrimeroPorAbajoGanaElRojo(){
 	
 		CuatroEnLinea juego = new CuatroEnLinea (4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(1);
@@ -554,13 +550,14 @@ public class PruebasCuatroEnLinea {
 		 *  [ A, R, A, R],
 		 *  [ R, A, R, A]]
 		 */
+		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Carlitox", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
 	}
 	
 	@Test
-	public void SiElJugadorAmarilloHaceCuatroEnLineaDiagonalEmpezandoElPrimeroPorArribaGanaElAmarillo(){
+	public void siElJugadorAmarilloHaceCuatroEnLineaDiagonalEmpezandoElPrimeroPorArribaGanaElAmarillo(){
 	
 		CuatroEnLinea juego = new CuatroEnLinea (4, 4, "Carlitox", "Alejo");
 		juego.soltarFicha(1);
@@ -582,6 +579,69 @@ public class PruebasCuatroEnLinea {
 		 *  [ A, A, A, V],
 		 *  [ R, R, R, A]]
 		 */
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Alejo", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void sEnTableroDeSietePorSieteiElJugadorRojoHaceCuatroEnLineaDiagonalEmpezandoElPrimeroPorAbajoGanaElRojo(){
+	
+		CuatroEnLinea juego = new CuatroEnLinea (7, 7, "Carlitox", "Alejo");
+		juego.soltarFicha(3);
+		juego.soltarFicha(4);
+		juego.soltarFicha(4);
+		juego.soltarFicha(4);
+		juego.soltarFicha(5);
+		juego.soltarFicha(5);
+		juego.soltarFicha(5);
+		juego.soltarFicha(6);
+		juego.soltarFicha(6);
+		juego.soltarFicha(6);
+		juego.soltarFicha(6);
+		
+		/*
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, R, V ],
+		 *  [ V, V, V, A, R, A, V ],
+		 *  [ V, V, V, R, A, R, V ],
+		 *  [ V, V, R, A, R, A, V ]]
+		 */
+		
+		Assert.assertTrue(juego.hayGanador());
+		Assert.assertEquals("Carlitox", juego.obtenerGanador());
+		Assert.assertTrue(juego.termino());
+	}
+	
+	@Test
+	public void siEnTableroDeSietePorSieteElJugadorAmarilloHaceCuatroEnLineaDiagonalDescendenteAPartirDeLaCuartaFilaGanaElAmarillo(){
+	
+		CuatroEnLinea juego = new CuatroEnLinea (7, 7, "Carlitox", "Alejo");
+		
+		for (int i = 0; i < 3; i++) {
+			juego.soltarFicha(1);		
+			juego.soltarFicha(2);
+			juego.soltarFicha(3);
+			juego.soltarFicha(4);
+			juego.soltarFicha(5);
+			juego.soltarFicha(6);
+			juego.soltarFicha(7);
+		}
+		juego.soltarFicha(1);		
+		
+		/*
+		 * [[ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ V, V, V, V, V, V, V ],
+		 *  [ A, V, V, V, V, V, V ],
+		 *  [ R, A, R, A, R, A, R ],
+		 *  [ A, R, A, R, A, R, A ],
+		 *  [ R, A, R, A, R, A, R ]]
+		 */
+		
 		Assert.assertTrue(juego.hayGanador());
 		Assert.assertEquals("Alejo", juego.obtenerGanador());
 		Assert.assertTrue(juego.termino());
